@@ -7,7 +7,6 @@ Uses Tkinter with ttkbootstrap for modern themes.
 """
 
 import os
-import shutil
 from pathlib import Path
 from tkinter import filedialog, messagebox
 import ttkbootstrap as ttk
@@ -18,6 +17,7 @@ class EmptyDirRemover(ttk.Window):
     """Main application window for removing empty directories."""
     
     # Common files that are auto-generated and can be ignored
+    # Note: '._*' is a reference - actual pattern matching is done in is_ignorable_file()
     IGNORABLE_FILES = {
         '.DS_Store',      # macOS
         'Thumbs.db',      # Windows
@@ -25,7 +25,7 @@ class EmptyDirRemover(ttk.Window):
         '.localized',     # macOS
         'Icon\r',         # macOS custom folder icons
         '._.DS_Store',    # macOS resource fork
-        '._*',            # macOS resource fork files (pattern)
+        '._*',            # macOS resource fork files (pattern reference)
     }
     
     def __init__(self):
