@@ -1,0 +1,2 @@
+# rmtea
+Remove empty directories
